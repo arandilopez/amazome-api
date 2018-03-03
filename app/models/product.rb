@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  validate :sku, presence: true, uniqueness: true
-  validates_presence_of :name
-  validate :price, presence: true, numerically: true
+  validates :sku, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :price, presence: true, numericality: true
 end
