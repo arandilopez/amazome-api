@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
   before_action :authenticate_user, except: [:index, :show]
-
+  only_allow :admin, to: [:create, :update, :destroy]
   # GET /products
   def index
     @products = Product.all

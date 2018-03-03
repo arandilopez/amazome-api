@@ -14,7 +14,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Product.count') do
       post products_url, params: { product: {
         description: 'Item', name: 'Item', price: 2.3, sku: '123456789' }
-      }, as: :json, headers: authenticated_header(create(:user))
+      }, as: :json, headers: authenticated_header(create(:admin))
     end
 
     assert_response 201
@@ -28,13 +28,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should update product" do
     patch product_url(@product), params: {
       product: { name: "#{@product.name} nuevo", price: @product.price + 1 }
-    }, as: :json, headers: authenticated_header( create(:user) )
+    }, as: :json, headers: authenticated_header( create(:admin) )
     assert_response 200
   end
 
   test "should destroy product" do
     assert_difference('Product.count', -1) do
-      delete product_url(@product), as: :json, headers: authenticated_header( create(:user) )
+      delete product_url(@product), as: :json, headers: authenticated_header( create(:admin) )
     end
 
     assert_response 204
