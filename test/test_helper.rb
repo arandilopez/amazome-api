@@ -12,4 +12,11 @@ class ActiveSupport::TestCase
       'Authorization': "Bearer #{token}"
     }
   end
+
+end
+
+class ActionDispatch::IntegrationTest
+  def json_response
+    JSON.parse(@response.body)
+  end
 end
