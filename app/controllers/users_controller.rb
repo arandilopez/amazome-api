@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user
+  before_action :set_user, only: [:show, :update, :destroy]
   only_allow :admin, to: [:index, :create, :update, :destroy]
   # GET /users
   def index
