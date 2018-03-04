@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   resources :products
   resources :wish_lists do
+    resources :products, controller: 'wish_list_products', only: [:index, :create, :destroy]
   end
 end
