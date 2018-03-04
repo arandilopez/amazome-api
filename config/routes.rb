@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  post '/login', to: 'user_token#create'
+  post '/sign_up', to: 'register#create', as: :register
+  post '/login', to: 'user_token#create', as: :login
   resources :users do
     collection do
       get 'current'
