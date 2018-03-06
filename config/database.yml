@@ -76,10 +76,10 @@ test:
 # You can use this database configuration with:
 #
 production:
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
 #
 # production:
-#   <<: *default
 #   database: amazome_production
 #   username: amazome
 #   password: <%= ENV['AMAZOME_DATABASE_PASSWORD'] %>
