@@ -18,6 +18,16 @@ FactoryBot.define do
         create_list(:wish_list_with_products, evaluator.wish_lists_count, user: user, products_count: evaluator.products_count)
       end
     end
+
+    factory :user_with_cart_and_products do
+      transient do
+        products_count 5
+      end
+
+      after(:create) do |user, evaluator|
+        create(:cart_with_products, user: user, products_count: evaluator.products_count)
+      end
+    end
   end
 
   factory :admin, class: User do
