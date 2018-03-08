@@ -3,7 +3,7 @@ class RegisterController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       token = auth_token(@user)
-      render json: {token: token}, status: :created
+      render json: {jwt: token}, status: :created
     else
       render json: @user.errors, status: :unprocessable_entity
     end

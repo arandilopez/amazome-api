@@ -8,7 +8,7 @@ class RegisterControllerTest < ActionDispatch::IntegrationTest
       }, as: :json
     end
     assert_response :created
-    assert json_response['token'].present?
+    assert json_response['jwt'].present?
   end
 
 end
