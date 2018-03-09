@@ -17,6 +17,6 @@ end
 
 class ActionDispatch::IntegrationTest
   def json_response
-    JSON.parse(@response.body)
+    JSON.parse(@response.body) rescue {}
   end
 end
