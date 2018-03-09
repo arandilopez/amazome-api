@@ -1,26 +1,40 @@
-# README
+# Amazome REST API
 
 [![Build Status](https://travis-ci.org/arandilopez/amazome.svg?branch=master)](https://travis-ci.org/arandilopez/amazome)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## System dependencies
 
-* Ruby version
+- Ruby version >= 2.4.1
+- Postgresql >= 9.2
 
-* System dependencies
+## Configuration
 
-* Configuration
+Clone this repo
+```
+$ git clone https://github.com/arandilopez/amazome
+```
 
-* Database creation
+Install dependencies
+```
+$ bin/bundle install
+```
 
-* Database initialization
+## Database creation & initialization
 
-* How to run the test suite
+Run
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ bin/rails db:create && bin/rails db:setup
+```
 
-* Deployment instructions
+## Test
 
-* ...
+Run
+```
+$ bin/rails test
+```
+
+## Deployment instructions
+
+You can deploy on [heroku](https://devcenter.heroku.com/articles/getting-started-with-rails5)
