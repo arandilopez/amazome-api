@@ -38,3 +38,7 @@ $ bin/rails test
 ## Deployment instructions
 
 You can deploy on [heroku](https://devcenter.heroku.com/articles/getting-started-with-rails5)
+
+
+## API Documentation
+Check [API Docs](API.md)
