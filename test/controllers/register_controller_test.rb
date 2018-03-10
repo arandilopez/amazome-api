@@ -8,6 +8,7 @@ class RegisterControllerTest < ActionDispatch::IntegrationTest
       }, as: :json
     end
     assert_response :created
+    assert_equal 1, json_response.size
     assert json_response['jwt'].present?
   end
 
