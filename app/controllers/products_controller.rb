@@ -1,10 +1,15 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
-  before_action :authenticate_user, except: [:index, :show]
+  before_action :authenticate_user, only: [:create, :update, :destroy]
   only_allow :admin, to: [:create, :update, :destroy]
   # GET /products
   def index
     @products = Product.all
+    @products = @products.limit(params[:limit]) if params[:limit].present?
+    if params[:filter].present?
+      filter = "%#{params[:filter]}%"
+      @products = @products.where('name ilike :filter OR description ilike :filter', filter: filter)
+    end
 
     render json: @products
   end

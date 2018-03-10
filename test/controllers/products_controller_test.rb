@@ -2,12 +2,33 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = create(:product)
+    @product = create(:product, name: "Coca Cola")
+    @product2 = create(:product, name: "Coca Cola light")
+    @products = create_list(:product, 20)
   end
 
   test "should get index" do
     get products_url, as: :json
     assert_response :success
+    assert_equal 22, json_response.size
+  end
+
+  test "should get index with limit" do
+    get products_url, params: {limit: 10}
+    assert_response :success
+    assert_equal 10, json_response.size
+  end
+
+  test "should get index with filter" do
+    get products_url, params: {filter: "coca"}
+    assert_response :success
+    assert_equal 2, json_response.size
+  end
+
+  test "should get index with filter and limit" do
+    get products_url, params: {filter: "coca", limit: 1}
+    assert_response :success
+    assert_equal 1, json_response.size
   end
 
   test "should create product" do
