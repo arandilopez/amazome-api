@@ -6,10 +6,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @products = @products.limit(params[:limit]) if params[:limit].present?
-    if params[:filter].present?
-      filter = "%#{params[:filter]}%"
-      @products = @products.where('sku ilike :filter OR name ilike :filter OR description ilike :filter', filter: filter)
-    end
+    @products = @products.search(params[:filter]) if params[:filter].present?
 
     render json: @products
   end
