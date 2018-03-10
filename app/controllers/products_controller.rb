@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @products = @products.limit(params[:limit]) if params[:limit].present?
     if params[:filter].present?
       filter = "%#{params[:filter]}%"
-      @products = @products.where('name ilike :filter OR description ilike :filter', filter: filter)
+      @products = @products.where('sku ilike :filter OR name ilike :filter OR description ilike :filter', filter: filter)
     end
 
     render json: @products
