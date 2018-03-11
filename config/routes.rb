@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
+  get '/', to: 'home#index', as: :home
   post '/sign_up', to: 'register#create', as: :register
   post '/login', to: 'user_token#create', as: :login
   resources :users do
