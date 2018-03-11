@@ -5,7 +5,7 @@ module ProductsRepository
       products = Product.all
       products = products.limit(params[:limit]) if params[:limit].present?
       products = products.search(params[:filter]) if params[:filter].present?
-      products
+      products.to_a
     end
   end
 
