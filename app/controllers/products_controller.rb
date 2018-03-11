@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   only_allow :admin, to: [:create, :update, :destroy]
   # GET /products
   def index
-    @products = ProductsCacheRepository.all(params)
+    @products = ProductsRepository.all(params)
     render json: @products
   end
 
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = ProductsCacheRepository.find(params[:id])
+      @product = ProductsRepository.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -1,4 +1,4 @@
-module ProductsCacheRepository
+module ProductsRepository
   extend self
   def all(params = {})
     Rails.cache.fetch(products_all_cache_key(params), expires_in: 10.minutes) do
