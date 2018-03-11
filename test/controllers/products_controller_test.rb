@@ -14,19 +14,19 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index with limit" do
-    get products_url, params: {limit: 10}
+    get products_url, params: {limit: 10}, xhr: true
     assert_response :success
     assert_equal 10, json_response.size
   end
 
   test "should get index with filter" do
-    get products_url, params: {filter: "coca"}
+    get products_url, params: {filter: "coca"}, xhr: true
     assert_response :success
     assert_equal 2, json_response.size
   end
 
   test "should get index with filter and limit" do
-    get products_url, params: {filter: "coca", limit: 1}
+    get products_url, params: {filter: "coca", limit: 1}, xhr: true
     assert_response :success
     assert_equal 1, json_response.size
   end
