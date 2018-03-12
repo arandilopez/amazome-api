@@ -1,4 +1,8 @@
 # API Documentation
+
+- [Authentication](##Authentication)
+- [Products](##Products)
+
 ## Authentication
 ### Sign Up a new User
 #### `POST /sign_up`
@@ -42,10 +46,11 @@
 ### Get all products
 #### `GET /products`
 ##### Params
-```json
-{
-}
-```
+| Param          | Description |
+| :------------- | :------------- |
+| limit          | Number, limits products array size |
+| filter         | String, applies a case insensitive filter on sku, name and description |
+
 ##### Response
 ```json
 [
@@ -63,7 +68,10 @@
 ### Get a Single products info
 #### `GET /products/:id`
 ##### Params
-Pass `id` of products, ie: `/products/2`
+| Param | Description     |
+| :------------- | :------------- |
+| id       | Number, Product ID      |
+
 ##### Response
 ```json
 {
@@ -76,3 +84,79 @@ Pass `id` of products, ie: `/products/2`
   "updated_at": "2018-01-01 12:00:00",
 }
 ```
+
+### Create a new Product
+#### `POST /products`
+To create a new product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+```json
+{
+  "product": {
+    "sku": "75352411563",
+    "name": "Coke",
+    "description": "Coke 500ml",
+    "price": 10.00,
+    "image": "https://coke.com/image.png"
+  }
+}
+```
+##### Response
+```json
+{
+  "id": 100,
+  "sku": "75352411563",
+  "name": "Coke",
+  "description": "Coke 500ml",
+  "price": 10.00,
+  "image": "https://coke.com/image.png",
+  "created_at": "2018-01-01 12:00:00",
+  "updated_at": "2018-01-01 12:00:00",
+}
+```
+
+### Update a product
+#### `PUT /products/:id`
+To update a product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+| Param | Description |
+| :------------- | :------------- |
+| id | Number, Product ID to update |
+
+```json
+{
+  "product": {
+    "sku": "75352411563",
+    "name": "Coke",
+    "description": "Coke 500ml",
+    "price": 10.00,
+    "image": "https://coke.com/image.png"
+  }
+}
+```
+##### Response
+```json
+{
+  "id": 100,
+  "sku": "75352411563",
+  "name": "Coke",
+  "description": "Coke 500ml",
+  "price": 10.00,
+  "image": "https://coke.com/image.png",
+  "created_at": "2018-01-01 12:00:00",
+  "updated_at": "2018-01-01 23:00:00",
+}
+```
+
+### Delete a product
+#### `DELETE /products/:id`
+To delete a product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+| Param | Description |
+| :------------- | :------------- |
+| id | Number, Product ID to delete |
+
+##### Response
+Respose SHOULD HAVE a `204` status code (No Content).
