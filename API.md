@@ -1,7 +1,7 @@
 # API Documentation
 
-- [Authentication](##Authentication)
-- [Products](##Products)
+- [Authentication](##authentication)
+- [Products](##products)
 
 ## Authentication
 ### Sign Up a new User
