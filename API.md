@@ -6,7 +6,7 @@
 ## Authentication
 ### Sign Up a new User
 #### `POST /sign_up`
-##### Params˚
+##### Params
 ```json
 {
   "user": {
@@ -87,7 +87,7 @@
 
 ### Create a new Product
 #### `POST /products`
-To create a new product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+To create a new product you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
 
 ##### Params
 ```json
@@ -117,7 +117,7 @@ To create a new product you should provide a valid JWT token for authenticate a 
 
 ### Update a product
 #### `PUT /products/:id`
-To update a product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+To update a product you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
 
 ##### Params
 | Param | Description |
@@ -151,7 +151,7 @@ To update a product you should provide a valid JWT token for authenticate a user
 
 ### Delete a product
 #### `DELETE /products/:id`
-To delete a product you should provide a valid JWT token for authenticate a user. Authenticated user MUST HAVE an admin role
+To delete a product you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
 
 ##### Params
 | Param | Description |
