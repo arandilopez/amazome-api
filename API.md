@@ -160,3 +160,133 @@ To delete a product you should provide a valid JWT token to authenticate a user.
 
 ##### Response
 Respose SHOULD HAVE a `204` status code (No Content).
+
+## Users
+### Get all users
+#### `GET /user`
+To get all users you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Response
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "created_at": "2018-01-01T12:00:00",
+    "updated_at": "2018-01-01T12:00:00",
+  },
+  // ...
+]
+```
+
+### Get a Single user info
+#### `GET /users/:id`
+To get a user you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+| Param | Description     |
+| :------------- | :------------- |
+| id       | Number, User ID      |
+
+##### Response
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "created_at": "2018-01-01T12:00:00",
+  "updated_at": "2018-01-01T12:00:00",
+}
+```
+
+### Get current logged in user info
+#### `GET /users/current`
+To get the current user you should provide a valid JWT token to authenticate a user.
+
+##### Response
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "created_at": "2018-01-01T12:00:00",
+  "updated_at": "2018-01-01T12:00:00",
+}
+```
+
+### Create a new User
+#### `POST /users`
+To create a new user you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+```json
+{
+  "user": {
+    "sku": "75352411563",
+    "name": "Coke",
+    "description": "Coke 500ml",
+    "price": 10.00,
+    "image": "https://coke.com/image.png"
+  }
+}
+```
+##### Response
+```json
+{
+  "id": 100,
+  "sku": "75352411563",
+  "name": "Coke",
+  "description": "Coke 500ml",
+  "price": 10.00,
+  "image": "https://coke.com/image.png",
+  "created_at": "2018-01-01 12:00:00",
+  "updated_at": "2018-01-01 12:00:00",
+}
+```
+
+### Update a user
+#### `PUT /users/:id`
+To update a user you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+| Param | Description |
+| :------------- | :------------- |
+| id | Number, User ID to update |
+
+```json
+{
+  "user": {
+    "sku": "75352411563",
+    "name": "Coke",
+    "description": "Coke 500ml",
+    "price": 10.00,
+    "image": "https://coke.com/image.png"
+  }
+}
+```
+##### Response
+```json
+{
+  "id": 100,
+  "sku": "75352411563",
+  "name": "Coke",
+  "description": "Coke 500ml",
+  "price": 10.00,
+  "image": "https://coke.com/image.png",
+  "created_at": "2018-01-01 12:00:00",
+  "updated_at": "2018-01-01 23:00:00",
+}
+```
+
+### Delete a user
+#### `DELETE /users/:id`
+To delete a user you should provide a valid JWT token to authenticate a user. Authenticated user MUST HAVE an admin role
+
+##### Params
+| Param | Description |
+| :------------- | :------------- |
+| id | Number, User ID to delete |
+
+##### Response
+Respose SHOULD HAVE a `204` status code (No Content).
