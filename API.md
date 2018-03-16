@@ -2,6 +2,8 @@
 
 - [Authentication](#authentication)
 - [Products](#products)
+- [Users](#users)
+- [Cart](#cart)
 
 ## Authentication
 ### Sign Up a new User
@@ -290,3 +292,60 @@ To delete a user you should provide a valid JWT token to authenticate a user. Au
 
 ##### Response
 Respose SHOULD HAVE a `204` status code (No Content).
+
+## Cart
+By default, every user has a cart.
+
+### Get products in cart
+#### `GET /cart`
+You should provide a valid JWT token to authenticate a user.
+
+##### Response
+An array of products
+```json
+[
+  {
+    "id": 1,
+    "sku": "756-76444521",
+    "name": "Github Mug",
+    "description": "A github mug",
+    "price": 14.00
+  },
+  // ...
+]
+```
+
+### Add a product to cart
+#### `POST /cart`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+```json
+{
+  "product": {
+    "id": 2
+  }
+}
+```
+
+##### Response
+An array of products with status 201
+```json
+[
+  {
+    "id": 1,
+    "sku": "756-76444521",
+    "name": "Github Mug",
+    "description": "A github mug",
+    "price": 14.00
+  },
+  {
+    "id": 2,
+    "sku": "756-76444521",
+    "name": "Github Mug x2",
+    "description": "A github mug",
+    "price": 28.00
+  },
+  // ...
+]
+```
