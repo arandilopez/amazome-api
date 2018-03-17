@@ -34,11 +34,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should create product" do
     assert_difference('Product.count') do
       post products_url, params: { product: {
-        description: 'Item', name: 'Item', price: 2.3, sku: '123456789' }
+        description: 'Item', name: 'Item', price: 2.3, sku: '123456789', image: 'http://lorempixel.com/50/50' }
       }, as: :json, headers: authenticated_header(create(:admin))
     end
-
     assert_response 201
+    assert json_response['id'].present?
+    assert json_response['image'].present?
   end
 
   test "should show product" do

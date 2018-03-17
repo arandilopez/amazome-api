@@ -8,4 +8,8 @@ class Product < ApplicationRecord
   scope :search, -> (filter) do
     where('sku ilike :filter OR name ilike :filter OR description ilike :filter', filter: "%#{filter}%") if filter.present?
   end
+
+  before_save do
+    self.image = Faker::LoremPixel.image("512x512") if self.image.blank?
+  end
 end
