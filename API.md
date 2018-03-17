@@ -225,23 +225,21 @@ To create a new user you should provide a valid JWT token to authenticate a user
 ```json
 {
   "user": {
-    "sku": "75352411563",
-    "name": "Coke",
-    "description": "Coke 500ml",
-    "price": 10.00,
-    "image": "https://coke.com/image.png"
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "username123",
+    "password_confirmation": "username123"
   }
 }
 ```
 ##### Response
 ```json
 {
-  "id": 100,
-  "sku": "75352411563",
-  "name": "Coke",
-  "description": "Coke 500ml",
-  "price": 10.00,
-  "image": "https://coke.com/image.png",
+  "id": 10,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "created_at": "2018-01-01T12:00:00",
+  "updated_at": "2018-01-01T12:00:00",
   "created_at": "2018-01-01 12:00:00",
   "updated_at": "2018-01-01 12:00:00",
 }
@@ -259,25 +257,21 @@ To update a user you should provide a valid JWT token to authenticate a user. Au
 ```json
 {
   "user": {
-    "sku": "75352411563",
-    "name": "Coke",
-    "description": "Coke 500ml",
-    "price": 10.00,
-    "image": "https://coke.com/image.png"
+    "name": "John Doe",
+    "email": "john@example.com",
   }
 }
 ```
 ##### Response
 ```json
 {
-  "id": 100,
-  "sku": "75352411563",
-  "name": "Coke",
-  "description": "Coke 500ml",
-  "price": 10.00,
-  "image": "https://coke.com/image.png",
+  "id": 10,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "created_at": "2018-01-01T12:00:00",
+  "updated_at": "2018-01-01T12:00:00",
   "created_at": "2018-01-01 12:00:00",
-  "updated_at": "2018-01-01 23:00:00",
+  "updated_at": "2018-01-01 12:00:00",
 }
 ```
 
