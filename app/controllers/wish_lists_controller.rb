@@ -28,6 +28,7 @@ class WishListsController < ApplicationController
   # PATCH/PUT /wish_lists/1
   def update
     if @wish_list.update(wish_list_params)
+      @wish_list.reload
       render json: @wish_list
     else
       render json: @wish_list.errors, status: :unprocessable_entity

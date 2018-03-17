@@ -15,12 +15,30 @@ module ProductsRepository
     end
   end
 
+  def clear_cache(id = nil)
+    Rails.cache.clear(product_cache_key(id)) if id.present?
+    products_cache_keys.each do |key|
+      Rails.cache.clear(key)
+    end
+    Rails.cache.clear("products_cache_keys")
+  end
+
   private
 
   def products_all_cache_key(params = {})
     limit = params[:limit]
     filter = params[:filter]
-    "products_all_limit_#{limit}_filter_#{filter}"
+    key = "products_all_limit_#{limit}_filter_#{filter}"
+    keys = products_cache_keys
+    keys.push(key)
+    Rails.cache.write("products_cache_keys", keys.uniq, expires_in: 10.minutes)
+    return key
+  end
+
+  def products_cache_keys
+    Rails.cache.fetch("products_cache_keys", expires_in: 10.minutes) do
+      []
+    end
   end
 
   def product_cache_key(id)

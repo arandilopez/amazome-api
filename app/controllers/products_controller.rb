@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      ProductsRepository.clear_cache
       render json: @product, status: :created, location: @product
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -27,6 +28,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
     if @product.update(product_params)
+      @product.reload
+      ProductsRepository.clear_cache(@product.id)
       render json: @product
     else
       render json: @product.errors, status: :unprocessable_entity
@@ -35,6 +38,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   def destroy
+    ProductsRepository.clear_cache(@product.id)
     @product.destroy
   end
 
