@@ -5,6 +5,6 @@ namespace :products do
     puts "****************************************"
     puts "Updated #{products.size} products"
     puts "****************************************"
-    products.update_all(image: Faker::LoremPixel.image("50x60"))
+    products.update_all(image: Faker::LoremPixel.image("512x512"))
   end
 end
