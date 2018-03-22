@@ -4,6 +4,8 @@
 - [Products](#products)
 - [Users](#users)
 - [Cart](#cart)
+- [Wish lists](#wish-lists)
+- [Products in Wish lists](#products-in-wish-lists)
 
 ## Authentication
 ### Sign Up a new User
@@ -343,3 +345,173 @@ An array of products with status 201
   // ...
 ]
 ```
+
+
+## Wish lists
+### Get all currrent user's wish lists
+#### `GET /wish_lists`
+You should provide a valid JWT token to authenticate a user.
+
+##### Response
+```json
+[
+  {
+    "id": 1,    
+    "name": "Kitchen",
+  },
+  {
+    "id": 2,
+    "name": "Games",
+  },
+  // ...
+]
+```
+
+### Create new Wish list
+#### `POST /wish_lists`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+```json
+{
+  "wish_list": {
+    "name": "Office"
+  }
+}
+```
+
+##### Response
+```json
+{
+  "id": 3,
+  "name": "Office"
+}
+```
+
+### Update a Wish list
+#### `PUT /wish_lists/:id`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+| Params | Description     |
+| :------------- | :------------- |
+| id | Number, ID of wish_list       |
+
+```json
+{
+  "wish_list": {
+    "name": "Office and Stuffs"
+  }
+}
+```
+
+##### Response
+```json
+{
+  "id": 3,
+  "name": "Office and Stuffs"
+}
+```
+
+### Delete a Wish list
+#### `DELETE /wish_lists/:id`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+| Params | Description     |
+| :------------- | :------------- |
+| id | Number, ID of wish_list       |
+
+
+##### Response
+No Content Respose
+
+## Products in Wish lists
+### Get all products in a wish list
+#### `GET /wish_lists/:id/products`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+| Params | Description     |
+| :------------- | :------------- |
+| id | Number, ID of wish_list       |
+
+##### Response
+```json
+[
+  {
+    "id": 1,
+    "sku": "756-76444521",
+    "name": "Github Mug",
+    "description": "A github mug",
+    "price": 14.00
+  },
+  {
+    "id": 2,
+    "sku": "756-76444521",
+    "name": "Github Mug x2",
+    "description": "A github mug",
+    "price": 28.00
+  },
+  // ...
+]
+```
+
+### Add a product to a Wish list
+#### `POST /wish_lists/:id/products`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+| Params | Description     |
+| :------------- | :------------- |
+| id | Number, ID of wish_list       |
+
+```json
+{
+  "product": {
+    "id": 3
+  }
+}
+```
+
+##### Response
+```json
+[
+  {
+    "id": 1,
+    "sku": "756-76444521",
+    "name": "Github Mug",
+    "description": "A github mug",
+    "price": 14.00
+  },
+  {
+    "id": 2,
+    "sku": "756-76444521",
+    "name": "Github Mug x2",
+    "description": "A github mug",
+    "price": 28.00
+  },
+  {
+    "id": 3,
+    "sku": "756-764215121",
+    "name": "Github t shirt",
+    "description": "Size M",
+    "price": 38.00
+  },
+  // ...
+]
+```
+
+### Delete a product from a Wish list
+#### `DELETE /wish_lists/:id/products/:product_id`
+You should provide a valid JWT token to authenticate a user.
+
+##### Params
+| Params | Description     |
+| :------------- | :------------- |
+| id | Number, ID of wish_list       |
+| product_id | Number, ID of product       |
+
+
+##### Response
+No Content Response
